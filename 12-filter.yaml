@@ -1,27 +1,23 @@
 - name: filters
   hosts: local
-  connection: local 
-  tasks: 
-  - name: handle unefine variables
-    ansible.builtin.debug:
-     msg: "hello {{ preson | default('naveen') }}"
+  connection: local
+  tasks:
 
-  - name: covert string into list
-    vars: 
-      tools: "git,terraform,docker,kubernetes"
-    ansible.buliin.debug:
-      msg: "tools are: {{ tools |split(',') }}"
+    - name: handle undefined variables
+      ansible.builtin.debug:
+        msg: "hello {{ person | default('naveen') }}"
 
+    - name: convert string into list
+      vars:
+        tools: "git,terraform,docker,kubernetes"
+      ansible.builtin.debug:
+        msg: "tools are: {{ tools | split(',') }}"
 
-  - name: cover map into list
-    vars: 
-     course:
-       name: ansible
-       time: 120hrs
-       tariner: siva kuram reddy
-       ansible.builtin.debug
-       msg: "course info: {{ course | dict2items }}" 
-
-  
-
-    
+    - name: convert map into list
+      vars:
+        course:
+          name: ansible
+          time: "120hrs"
+          trainer: "siva kuram reddy"
+      ansible.builtin.debug:
+        msg: "course info: {{ course | dict2items }}"
