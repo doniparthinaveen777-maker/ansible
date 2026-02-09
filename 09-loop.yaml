@@ -1,0 +1,10 @@
+- name: loop 
+  hosts: local
+  tasks:
+  - name: print names
+    anisble.builtin.debug:
+     msg: "hello {{ item }}"
+    loop:
+    - naveen
+    - charan
+    - vishnu
