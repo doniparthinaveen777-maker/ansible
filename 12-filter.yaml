@@ -19,7 +19,7 @@
        name: ansible
        time: 120hrs
        tariner: siva kuram reddy
-      ansible.builtin.debug
+       ansible.builtin.debug
        msg: "course info: {{ course | dict2items }}" 
 
   
