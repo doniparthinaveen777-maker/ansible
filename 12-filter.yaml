@@ -1,0 +1,27 @@
+- name: filters
+  hosts: local
+  connection: local 
+  tasks: 
+  - name: handle unefine variables
+    ansible.builtin.debug:
+     msg: "hello {{ preson | default('naveen') }}"
+
+  - name: covert string into list
+    vars: 
+      tools: "git,terraform,docker,kubernetes"
+    ansible.buliin.debug:
+      msg: "tools are: {{ tools |split(',') }}"
+
+
+  - name: cover map into list
+    vars: 
+     course:
+       name: ansible
+       time: 120hrs
+       tariner: siva kuram reddy
+      ansible.builtin.debug
+       msg: "course info: {{ course | dict2items }}" 
+
+  
+
+    
