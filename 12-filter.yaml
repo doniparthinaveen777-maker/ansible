@@ -21,23 +21,30 @@
           trainer: "siva kuram reddy"
       ansible.builtin.debug:
         msg: "course info: {{ course | dict2items }}"
+
     - name: convert list into map
-      vars: 
+      vars:
         course:
-        - {'key': 'name', 'value': 'ansible'}
-        - {'key': 'time', 'value': '120hrs'}
-        - {'key': 'trainer', 'value': 'siva kuram reddy'}
-         
+          - { key: 'name', value: 'ansible' }
+          - { key: 'time', value: '120hrs' }
+          - { key: 'trainer', value: 'siva kuram reddy' }
+      ansible.builtin.debug:
+        msg: "course map: {{ course | items2dict }}"
+
     - name: convert upper to lower
       vars:
-       name: " Naveen Doniparthi"
+        name: "Naveen Doniparthi"
       ansible.builtin.debug:
-       msg: "hello {{ name | lower}}"
-         
-          
+        msg: "hello {{ name | lower }}"
+
     - name: convert lower to upper
       vars:
-       name: " DONIPARTHI NAVEEN"
+        name: "doniparthi naveen"
       ansible.builtin.debug:
-       msg: "hello {{ name | UPPER }"
-         
+        msg: "hello {{ name | upper }}"
+
+    - name: print min and max
+      vars: 
+       number: [1,39,66,9999,0987,77,69]  
+      ansiable.builtin.debug:
+       msg: "min is: {{ numbers | min }} max is: {{ numbers | max }}"   
